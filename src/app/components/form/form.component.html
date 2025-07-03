@@ -1,0 +1,57 @@
+<form [formGroup]="meuform">
+ <div class="p-field p-col-12">
+     <label for="name">name</label>
+     <input pInputText id="name" type="text" pInputText formControlName="name" />
+     @if(!meuform.value.name){
+         <p-message *ngIf="sendedForm && meuform.invalid" severity="error" variant="simple" size="small">preencha o campo nome</p-message>
+     }
+  </div>
+  <div class="p-field p-col-12">
+      <label for="idade">Idade</label>
+      <input pInputText   id="idade" type="text" pInputText formControlName="idade" />
+      @if(!meuform.value.idade){
+          <p-message *ngIf="sendedForm && meuform.invalid" severity="error" variant="simple" size="small">preencha o campo idade</p-message>
+      }
+    </div>
+  <div class="p-field p-col-12">
+      <label for="data">data</label>
+      <input pInputText id="data" type="date" pInputText formControlName="data" />
+      @if(!meuform.value.data){
+          <p-message *ngIf="sendedForm && meuform.invalid" severity="error" variant="simple" size="small">preencha o campo data</p-message>
+      }
+  </div>
+  <div class="select">
+    <p-radiobutton
+        name="convenio"
+        formControlName="convenio"
+        [value]="true"
+        inputId="temConvenio"
+    ></p-radiobutton>
+    <label for="temConvenio">Tem convênio</label>
+  </div>
+  <div class="select">
+      <p-radiobutton
+        name="convenio"
+        formControlName="convenio"
+        [value]="false"
+        inputId="semConvenio"
+      ></p-radiobutton>
+      <label for="semConvenio">Não tem convênio</label>
+  </div>
+
+  <div formArrayName="beneficios">
+    <section *ngFor="let benef of beneficios.controls; let i= index" [formGroupName]="i">
+        
+        <label>
+            Tipo
+            <input type="text" formControlName="tipo" />
+        </label>
+        <label>
+            valor
+            <input type="text" formControlName="valor" />
+        </label>
+        <button (click)="addbenef()">Adicionar tarefa</button>
+    </section>
+    </div>
+<button (click)="submit()">cadastra</button>
+</form>

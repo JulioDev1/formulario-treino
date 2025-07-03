@@ -1,0 +1,25 @@
+form{
+    padding: 10px;
+    .select{
+        display: flex;
+        flex-direction: row;
+    }
+    width: 100px;
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        input{
+            border: 1px solid black;
+        }
+    }
+    label{
+        width:100%;
+    }
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 200px;
+
+}
