@@ -6,6 +6,14 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 
 
 
+interface forms{
+  name: FormControl,
+  idade: FormControl,
+  data:  FormControl,
+  convenio:  FormControl,
+  beneficios:  FormArray<FormGroup>
+}
+
 @Component({
   selector: 'app-form',
   standalone:true,
@@ -14,11 +22,12 @@ import { RadioButtonModule } from 'primeng/radiobutton';
   styleUrl: './form.component.scss'
 })
 
-
 export class FormComponents {
-  sendedForm=false
+  form!:FormGroup<forms>
+  sendedForm = false
   
-  meuform = new FormGroup({
+  constructor(){
+    this.form= new FormGroup({
      name:  new FormControl('', Validators.required),
      idade: new FormControl('', Validators.required),
      data: new FormControl('', Validators.required),
@@ -29,11 +38,12 @@ export class FormComponents {
           valor:new FormControl('', Validators.required)
         })
      ])
-  })
+    }) 
+  }
 
   submit(){
     this.sendedForm = true
-    console.log(this.meuform.value)
+    console.log(this.form.value)
   }
 
   addbenef(){
@@ -45,7 +55,7 @@ export class FormComponents {
   }
 
   get beneficios(): FormArray{
-    return this.meuform.get('beneficios') as FormArray
+    return this.form.get('beneficios') as FormArray
   }
 
 
