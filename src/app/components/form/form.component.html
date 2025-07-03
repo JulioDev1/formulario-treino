@@ -8,7 +8,7 @@
   </div>
   <div class="p-field p-col-12">
       <label for="idade">Idade</label>
-      <input pInputText   id="idade" type="text" pInputText formControlName="idade" />
+      <input pInputText   id="idade" type="number" pInputText formControlName="idade" />
       @if(!form.value.idade){
           <p-message *ngIf="sendedForm && form.invalid" severity="error" variant="simple" size="small">preencha o campo idade</p-message>
       }
@@ -48,7 +48,7 @@
         </label>
         <label>
             valor
-            <input type="text" formControlName="valor" />
+            <input type="number" formControlName="valor" />
         </label>
         <button (click)="addbenef()">Adicionar beneficios</button>
     </section>
